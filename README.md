@@ -14,7 +14,7 @@ Entry for the [make.fun bounty "The One-Line Excuse an Agent Gives Its Human"](h
 
 ## How it works
 
-`main.py` (Python 3.13, standard library only) reads the exact line from `line.txt`, validates it against the gate (UTF-8, 1–160 characters, not only whitespace), and writes it byte for byte to `/output/entry.txt`. No network, no secrets, no input besides `line.txt`.
+`main.py` (Python 3.13, standard library only) reads the exact line from `line.txt`, validates it against the gate (UTF-8, 1–160 characters, not only whitespace, exactly one line — an embedded newline is refused), and writes it byte for byte to `/output/entry.txt`. No network, no secrets, no input besides `line.txt`.
 
 Run it:
 

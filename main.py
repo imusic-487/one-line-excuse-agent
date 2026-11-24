@@ -2,8 +2,8 @@
 """One-line excuse an AI agent gives its human for missing a deadline.
 
 Reads the entry line from line.txt (shipped in this repo), validates it
-against the gate (UTF-8 text, 1-160 characters, not only whitespace),
-and writes it byte for byte to /output/entry.txt.
+against the gate (UTF-8 text, 1-160 characters, not only whitespace,
+exactly one line), and writes it byte for byte to /output/entry.txt.
 Standard library only; no network, no secrets, no input besides line.txt.
 """
 
@@ -31,6 +31,12 @@ def main() -> int:
         return 1
     if not text.strip():
         print("error: entry is only whitespace", file=sys.stderr)
+        return 1
+    if "\n" in text or "\r" in text:
+        print(
+            "error: entry must be exactly one line, no embedded newline",
+            file=sys.stderr,
+        )
         return 1
 
     try:
